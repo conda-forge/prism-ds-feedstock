@@ -38,6 +38,8 @@ requirements:
     - shortuuid >=1.0
     - rich-click >=1.6.1
     - pillow >=9.5.0
+    - sqlalchemy >=2.0.27
+    - watchdog >=4.0.0
 
 test:
   imports:

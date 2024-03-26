@@ -1,5 +1,5 @@
 {% set name = "prism-ds" %}
-{% set version = "0.2.8" %}
+{% set version = "0.3.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,11 +7,11 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/prism-ds-{{ version }}.tar.gz
-  sha256: 97264b8c0be2746ee0c6391156e0730364509819e5baef266249e8b9ae11c9ec
+  sha256: fc23f80565fa8a84d7e79ffba90e00f217a50410a0daa249667a3d6d5fa3b0a0
 
 build:
   entry_points:
-    - prism = prism.main:invoke
+    - prism = prism.main:cli
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   number: 0
@@ -38,6 +38,8 @@ requirements:
     - shortuuid >=1.0
     - rich-click >=1.6.1
     - pillow >=9.5.0
+    - sqlalchemy >=2.0.27
+    - watchdog >=4.0.0
 
 test:
   imports:

@@ -6,7 +6,7 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/prism-ds-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/prism-ds-{{ version }}.tar.gz
   sha256: fc23f80565fa8a84d7e79ffba90e00f217a50410a0daa249667a3d6d5fa3b0a0
 
 build:
@@ -14,15 +14,15 @@ build:
     - prism = prism.main:cli
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 0
+  number: 1
 
 requirements:
   host:
-    - python >=3.7
+    - python {{ python_min }}
     - setuptools >=41.1.0
     - pip
   run:
-    - python >=3.7
+    - python >={{ python_min }}
     - astor >=0.7
     - boto3 >=1
     - botocore >=1
@@ -49,6 +49,7 @@ test:
     - prism --help
   requires:
     - pip
+    - python {{ python_min }}
 
 about:
   home: https://www.runprism.com/
